@@ -23,6 +23,18 @@ export class TasksService {
     return found;
   }
 
+  createTask(createTaskDto: CreateTaskDto): Promise<Task> {
+    return this.tasksRepository.createTask(createTaskDto);
+  }
+
+  async deleteTask(id: string): Promise<void> {
+    const result = await this.tasksRepository.delete(id);
+
+    if (result.affected === 0) {
+      throw new NotFoundException(`Task with ID ${id} not found`);
+    }
+  }
+
   // getAllTasks(): Task[] {
   //   return this.tasks;
   // }
@@ -51,16 +63,6 @@ export class TasksService {
 
   //   // return the result
   //   return tasks;
-  // }
-
-  createTask(createTaskDto: CreateTaskDto): Promise<Task> {
-    return this.tasksRepository.createTask(createTaskDto);
-  }
-
-  // deleteTask(id: string): void {
-  //   // unreccomended method, because it will loop all the array
-  //   const found = this.getTaskByID(id);
-  //   this.tasks = this.tasks.filter((task) => task.id !== found.id);
   // }
 
   // updateTaskStatus(id: string, status: TaskStatus): Task {
