@@ -34,6 +34,15 @@ export class TasksController {
     return this.tasksService.deleteTask(id);
   }
 
+  @Patch('/:id/status')
+  updateTaskStatus(
+    @Param('id') id: string,
+    @Body() updateTaskStatusDto: UpdateTaskStatus,
+  ): Promise<Task> {
+    const { status } = updateTaskStatusDto;
+    return this.tasksService.updateTaskStatus(id, status);
+  }
+
   // @Get()
   // // penamaan fungsi bebas, tidak harus sama dengan di service
   // getTasks(@Query() filterDto: GetTasksFilterDto): Task[] {
@@ -42,14 +51,5 @@ export class TasksController {
   //   } else {
   //     return this.tasksService.getAllTasks();
   //   }
-  // }
-
-  // @Patch('/:id/status')
-  // updateTaskStatus(
-  //   @Param('id') id: string,
-  //   @Body() updateTaskStatusDto: UpdateTaskStatus,
-  // ): Task {
-  //   const { status } = updateTaskStatusDto;
-  //   return this.tasksService.updateTaskStatus(id, status);
   // }
 }
