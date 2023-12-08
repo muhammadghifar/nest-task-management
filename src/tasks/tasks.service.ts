@@ -53,32 +53,9 @@ export class TasksService {
   //   return tasks;
   // }
 
-  // getTaskByID(id: string): Task {
-  //   // try to find the task
-  //   const found = this.tasks.find((task) => task.id === id);
-
-  //   // if not found, throw an error 404
-  //   if (!found) {
-  //     throw new NotFoundException(`Task with ID ${id} not found`);
-  //   }
-
-  //   // if found, return the task
-  //   return found;
-  // }
-
-  // createTask(createTaskDto: CreateTaskDto): Task {
-  //   const { title, description } = createTaskDto;
-
-  //   const task: Task = {
-  //     id: uuid(),
-  //     title,
-  //     description,
-  //     status: TaskStatus.OPEN,
-  //   };
-
-  //   this.tasks.push(task);
-  //   return task;
-  // }
+  createTask(createTaskDto: CreateTaskDto): Promise<Task> {
+    return this.tasksRepository.createTask(createTaskDto);
+  }
 
   // deleteTask(id: string): void {
   //   // unreccomended method, because it will loop all the array
