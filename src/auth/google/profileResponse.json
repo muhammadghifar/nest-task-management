@@ -1,0 +1,32 @@
+{
+    id: '106242497346305571531',
+    displayName: 'Tolomg Help',
+    name: {
+      familyName: 'Help',
+      givenName: 'Tolomg'
+    },
+    emails: [
+        {
+        value: 'tolomghelp@gmail.com',
+        verified: true
+        }
+    ],
+    photos: [
+        {
+        value: 'https: //lh3.googleusercontent.com/a/ACg8ocLD3Yjfjve_O8C3cOsQhMDEHg2BvIY2uu9viMOlFYU7=s96-c'
+        }
+    ],
+    provider: 'google',
+    _raw: '{\n'+'  "sub": "106242497346305571531",\n'+'  "name": "Tolomg Help",\n'+'  "given_name": "Tolomg",\n'+'  "family_name": "Help",\n'+'  "picture": "https://lh3.googleusercontent.com/a/ACg8ocLD3Yjfjve_O8C3cOsQhMDEHg2BvIY2uu9viMOlFYU7\\u003ds96-c",\n'+'  "email": "tolomghelp@gmail.com",\n'+'  "email_verified": true,\n'+'  "locale": "en"\n'+'
+    }',
+    _json: {
+      sub: '106242497346305571531',
+      name: 'Tolomg Help',
+      given_name: 'Tolomg',
+      family_name: 'Help',
+      picture: 'https: //lh3.googleusercontent.com/a/ACg8ocLD3Yjfjve_O8C3cOsQhMDEHg2BvIY2uu9viMOlFYU7=s96-c',
+      email: 'tolomghelp@gmail.com',
+      email_verified: true,
+      locale: 'en'
+    }
+}

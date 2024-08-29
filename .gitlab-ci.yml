@@ -1,0 +1,45 @@
+stages:
+  # - init
+  # - halo
+  - build
+  - deploy
+
+# init:
+#   stage: init
+#   script:
+#     - echo "ini Init"
+#     - corepack enable
+#     - pnpm install
+#   # only:
+#     # - cicd
+
+# halo:
+#   stage: halo
+#   script:
+#     - echo "ini Halo"
+#   # only:
+#   #   - cicd
+
+build:
+  stage: build
+  image: docker:latest
+  services:
+    - name: docker:dind
+  before_script:
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+  script:
+    - echo "Docker build"
+    - docker build --pull -t "$CI_REGISTRY_IMAGE" .
+    - docker push "$CI_REGISTRY_IMAGE"
+    - echo "Build successfully!"
+
+deploy:
+  stage: deploy
+  image: node:20
+  script:
+    - echo "Define your deployment script!"
+    - echo "Deploy successfully!"
+  # environment: production
+
+# only:
+#   - cicd

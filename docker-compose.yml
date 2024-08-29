@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  mydatabase:
+    container_name: postgres-task
+    image: postgres
+    # restart: always
+    environment:
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - 5432:5432
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+    
+  app:
+    container_name: task-nest-postgres
+    build:
+      context: .
+      dockerfile: Dockerfile
+    # restart: always
+    ports:
+      - 3000:3000
+    depends_on:
+      - mydatabase
+    environment:
+      - DB_HOST=mydatabase
+      - DB_PORT=5432
+      - DB_USERNAME=postgres
+      - DB_PASSWORD=postgres
+      - DB_NAME=postgres
+      - PORT=${PORT}
+    volumes:
+      - ./src:/usr/src/vol/
+
+  pgadmin:
+    image: dpage/pgadmin4
+    # restart: always
+    container_name: nest-pgadmin4
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@admin.com
+      - PGADMIN_DEFAULT_PASSWORD=pgadmin4
+    ports:
+      - '5050:80'
+    depends_on:
+      - mydatabase
